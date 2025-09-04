@@ -1,7 +1,13 @@
 import { useEffect } from "react";
 import axios from "axios";
 
-const actorsUrl = "https://lanciweb.github.io/demo/api/actresses/";
+const actressUrl = "https://lanciweb.github.io/demo/api/actresses/";
+
+useEffect(() => {
+  axios.get(actressUrl).then((resp) => {
+    console.log(resp.data);
+  });
+}, []);
 
 function App() {
   return <></>;
