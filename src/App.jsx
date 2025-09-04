@@ -15,16 +15,32 @@ function App() {
 
   return (
     <div className="container my-5">
-      <div className="row">
+      <div className="row gy-3">
         <div className="col-12">
-          <h1>Attrici Lista</h1>
+          <h1 className="text-center">Attrici Lista</h1>
         </div>
         {actresses.map((actress) => {
           return (
             <div className="col-12 col-md-4">
-              <div className="card">
-                {actress.name} {actress.birth_year} {actress.nationality}
-                {actress.biography} {actress.image} {actress.awards}
+              <div className="card bg-dark text-white">
+                <div className="card-header">
+                  <h3 className="card-title text-center">{actress.name}</h3>
+                </div>
+                <div className="card-body text-center">
+                  <img
+                    src={actress.image}
+                    alt={actress.name}
+                    className="img-fluid"
+                  />
+                  <p>
+                    <strong>Data di Nascita: {actress.birth_year}</strong>
+                  </p>
+                  <p>
+                    <strong>Nazionalità: {actress.nationality}</strong>
+                  </p>
+                  <p>Biografia: {actress.biography} </p>
+                  <p>Awards: {actress.awards}</p>
+                </div>
               </div>
             </div>
           );
