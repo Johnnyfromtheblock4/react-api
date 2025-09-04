@@ -10,7 +10,11 @@ const CastMemberCard = ({ castMember }) => {
     birth_year,
     death_year,
     most_famous_movies,
+    known_for,
   } = castMember;
+
+  // Usa known_for se most_famous_movies non esiste
+  const movies = most_famous_movies || known_for || [];
 
   return (
     <div className="card bg-dark text-white">
@@ -37,12 +41,13 @@ const CastMemberCard = ({ castMember }) => {
           <strong className="films">Film più famosi:</strong>
         </p>
         <ul className="list-unstyled films">
-          {most_famous_movies.map((movie, index) => (
+          {movies.map((movie, index) => (
             <li key={index}>{movie}</li>
           ))}
         </ul>
         <p className="premi">
-          <strong>Premi:</strong> {awards}
+          <strong>Premi:</strong>{" "}
+          {Array.isArray(awards) ? awards.join(", ") : awards}
         </p>
       </div>
     </div>
