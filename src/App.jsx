@@ -33,13 +33,30 @@ function App() {
                     className="img-fluid"
                   />
                   <p>
-                    <strong>Data di Nascita: {actress.birth_year}</strong>
+                    <strong>Anno di nascita:</strong> {actress.birth_year}
+                  </p>
+                  {actress.death_year && (
+                    <p>
+                      <strong>Anno di morte:</strong> {actress.death_year}
+                    </p>
+                  )}
+                  <p>
+                    <strong>Nazionalità:</strong> {actress.nationality}
                   </p>
                   <p>
-                    <strong>Nazionalità: {actress.nationality}</strong>
+                    <strong>Biografia:</strong> {actress.biography}
                   </p>
-                  <p>Biografia: {actress.biography} </p>
-                  <p>Awards: {actress.awards}</p>
+                  <p>
+                    <strong className="films">Film più famosi:</strong>
+                  </p>
+                  <ul className="list-unstyled films">
+                    {actress.most_famous_movies.map((movie, index) => (
+                      <li key={index}>{movie}</li>
+                    ))}
+                  </ul>
+                  <p className="premi">
+                    <strong>Premi:</strong> {actress.awards}
+                  </p>
                 </div>
               </div>
             </div>
