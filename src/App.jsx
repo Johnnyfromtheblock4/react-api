@@ -1,31 +1,36 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const actressUrl = "https://lanciweb.github.io/demo/api/actresses/";
+const actressesUrl = "https://lanciweb.github.io/demo/api/actresses/";
 
 function App() {
-  const [actress, setActress] = useState([]);
+  const [actresses, setActresses] = useState([]);
 
   // chiamata AJAX
   useEffect(() => {
-    axios.get(actressUrl).then((resp) => {
-      setActress(resp.data)
+    axios.get(actressesUrl).then((resp) => {
+      setActresses(resp.data);
     });
   }, []);
 
   return (
-    <>
-      <div className="containe">
-        <div className="row">
-          <div className="col-12">
-            <h1>Lista Attrici</h1>
-          </div>
-          <div className="col-12-col-md-4">
-            Nome Anno Nascita Nazionalità Biografia Immagine Riconoscimenti
-          </div>
+    <div className="container my-5">
+      <div className="row">
+        <div className="col-12">
+          <h1>Attrici Lista</h1>
         </div>
+        {actresses.map((actress) => {
+          return (
+            <div className="col-12 col-md-4">
+              <div className="card">
+                {actress.name} {actress.birth_year} {actress.nationality}
+                {actress.biography} {actress.image} {actress.awards}
+              </div>
+            </div>
+          );
+        })}
       </div>
-    </>
+    </div>
   );
 }
 
